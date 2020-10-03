@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
 {
     [Header("Передвижение")]
     public float speed = 4f;
     public float jumpForce = 1f;
-    
+    [Header("Взаимодействие")]
+    private GameObject joinPoint;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -18,29 +17,37 @@ public class CharacterScript : MonoBehaviour
     private Vector3 tempPos;
     private float velocityY;
     private float velocityX;
+    private Vector3 startJoinPointLocalPosition;
+    private GameObject joinedObject;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
+    private void Start()
+    {
+        joinPoint = transform.Find("JoinPoint").gameObject;
+        startJoinPointLocalPosition = joinPoint.transform.localPosition;
+    }
     private void FixedUpdate()
     {
         velocityX = -(tempPos.x - transform.position.x) / Time.fixedDeltaTime;
         velocityY = - Mathf.Round((tempPos.y - transform.position.y) / Time.fixedDeltaTime);
         tempPos = transform.position;
-        print(velocityY);
+        //print(velocityY);
     }
     private void Update()
     {
-        CheckGround();
+        CheckGround(); //проверка земли каждый кадр
+
         if (Input.GetButton("Horizontal"))
         {
             Move();
         }
         if (Input.GetButtonDown("Jump"))
         {
-
             if (onGround)
             {
                 Jump(1);
@@ -53,14 +60,26 @@ public class CharacterScript : MonoBehaviour
                 doubleJump = true;
             }
         }
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            print("e printed");
+            if (joinedObject != null)
+            {
+                print("не налл");
+                joinedObject.GetComponent<TrashScript>().DetachObject();
+            }
+        }
+
+        AnimatorParam(); //передача парметров в аниматор контроллер
+    }
+    void AnimatorParam()
+    {
         anim.SetFloat("speed.x", Mathf.Abs(velocityX));
         anim.SetFloat("speed.y", velocityY);
     }
     void Jump(float multiplier)
     {
             rb.velocity = transform.up * jumpForce;
-            //rb.AddForce(transform.up * jumpForce * multiplier, ForceMode2D.Impulse);
     }
     void Move()
     {
@@ -69,10 +88,12 @@ public class CharacterScript : MonoBehaviour
         if (moveTemp.x > 0.01f)
         {
             sprite.flipX = false;
+            joinPoint.transform.localPosition = startJoinPointLocalPosition;
         }
         else if (moveTemp.x < -0.01f)
         {
             sprite.flipX = true;
+            joinPoint.transform.localPosition = new Vector3 (-startJoinPointLocalPosition.x, startJoinPointLocalPosition.y, startJoinPointLocalPosition.z);
         }
         transform.position = Vector3.MoveTowards(transform.position, transform.position + moveTemp, speed * Time.deltaTime);
     }
@@ -92,4 +113,13 @@ public class CharacterScript : MonoBehaviour
             anim.SetBool("grounded", false);
         }
     }
+    public void ChangeJoinedObject(GameObject obj)
+    {
+        joinedObject = obj; 
+    }
+    public GameObject ReturnJoinedObject()
+    {
+        return joinedObject;
+    }
 }
+
