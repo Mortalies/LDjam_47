@@ -62,10 +62,8 @@ public class CharacterScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            print("e printed");
             if (joinedObject != null)
             {
-                print("не налл");
                 joinedObject.GetComponent<TrashScript>().DetachObject();
             }
         }
@@ -120,6 +118,10 @@ public class CharacterScript : MonoBehaviour
     public GameObject ReturnJoinedObject()
     {
         return joinedObject;
+    }
+    public void PutObjectToUrn()
+    {
+
     }
 }
 

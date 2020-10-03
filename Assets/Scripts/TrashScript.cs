@@ -55,8 +55,12 @@ public class TrashScript : MonoBehaviour
     {
         joinedToPlayer = false;
         transform.GetComponent<Collider2D>().enabled = true;
-        joinPoint.GetComponentInParent<CharacterScript>().ChangeJoinedObject(null);
-        transform.position = transform.position + (joinPoint.transform.position - joinPoint.transform.parent.position) * 1f;//перстановка объекта полсе отпускания, чтобы он сразу опять не прилип к игроку
-
+        //transform.position = transform.position + (joinPoint.transform.position - joinPoint.transform.parent.position) * 1f;//перстановка объекта полсе отпускания, чтобы он сразу опять не прилип к игроку
+        Invoke("ChangeJoinedToPlayer", 1f);
     }
+    void ChangeJoinedToPlayer()
+    {
+        joinPoint.GetComponentInParent<CharacterScript>().ChangeJoinedObject(null);
+    }
+
 }
