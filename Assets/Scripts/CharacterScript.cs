@@ -29,7 +29,7 @@ public class CharacterScript : MonoBehaviour
     }
     private void Start()
     {
-        joinPoint = transform.Find("JoinPoint").gameObject;
+        joinPoint = transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
         startJoinPointLocalPosition = joinPoint.transform.localPosition;
     }
     private void FixedUpdate()
@@ -38,28 +38,22 @@ public class CharacterScript : MonoBehaviour
         velocityY = - Mathf.Round((tempPos.y - transform.position.y) / Time.fixedDeltaTime);
         tempPos = transform.position;
 
-        //print(velocityY);
-    }
-    private void Update()
-    {
         CheckGround(); //проверка земли каждый кадр
 
         if (Input.GetButton("Horizontal"))
         {
             Move();
         }
+        //print(velocityY);
+    }
+    private void Update()
+    {
+        
         if (Input.GetButtonDown("Jump"))
         {
             if (onGround)
             {
                 Jump(1);
-            }
-            else if (!doubleJump)
-            {
-                
-                Jump(Mathf.Clamp(Mathf.Abs(velocityY), 1, 2));
-                
-                doubleJump = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -82,10 +76,12 @@ public class CharacterScript : MonoBehaviour
     {
         anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         anim.SetFloat("speed.y", velocityY);
+        anim.SetBool("withObj", joinedObject);
     }
     void Jump(float multiplier)
     {
-            rb.velocity = transform.up * jumpForce;
+        //rb.velocity = transform.up * jumpForce;
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
     void Move()
     {
@@ -101,7 +97,8 @@ public class CharacterScript : MonoBehaviour
             sprite.flipX = true;
             joinPoint.transform.localPosition = new Vector3 (-startJoinPointLocalPosition.x, startJoinPointLocalPosition.y, startJoinPointLocalPosition.z);
         }
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + moveTemp, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + moveTemp, speed * Time.fixedDeltaTime);
+        //rb.MovePosition(transform.position + moveTemp * speed / 100);
     }
     void CheckGround()
     {
@@ -110,16 +107,13 @@ public class CharacterScript : MonoBehaviour
         if (hit.collider != null)
         {
             onGround = true;
-            doubleJump = false;
             anim.SetBool("grounded", true);
-
         }
         else
         {
             onGround = false;
             anim.SetBool("grounded", false);
         }
-
         if (down)
         {
             if (hit.transform.GetComponent<LadderScript>() != null)

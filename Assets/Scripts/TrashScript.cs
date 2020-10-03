@@ -24,7 +24,7 @@ public class TrashScript : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
             {
-                joinPoint = collision.gameObject.transform.Find("JoinPoint").gameObject;
+                joinPoint = collision.transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
                 joinedToPlayer = true;
                 transform.GetComponent<Collider2D>().enabled = false;
                 collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
@@ -48,7 +48,7 @@ public class TrashScript : MonoBehaviour
     {
         if (joinedToPlayer)
         {
-            transform.position = joinPoint.transform.position;
+            transform.position = joinPoint.transform.position - Vector3.forward;
         }
     }
     public void DetachObject()

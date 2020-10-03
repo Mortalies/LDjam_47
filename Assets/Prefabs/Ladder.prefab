@@ -82,9 +82,9 @@ GameObject:
   - component: {fileID: 8801417929510514910}
   - component: {fileID: -2551684718452015968}
   - component: {fileID: 4639861863860595045}
-  - component: {fileID: 2340535892683780758}
+  - component: {fileID: 8530496643780526061}
   m_Layer: 0
-  m_Name: LadderLeft
+  m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &2340535892683780758
+--- !u!68 &8530496643780526061
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,13 +197,12 @@ EdgeCollider2D:
   m_GameObject: {fileID: 5942302835624593731}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 86c02e1c9c5fc9a44b1914ca2a693857, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.03084141, y: 0.9794395}
-  - {x: 0.9984275, y: 1.4925032}
-  - {x: 2, y: 2.007483}
+  - {x: 0, y: 1}
+  - {x: 2, y: 2}

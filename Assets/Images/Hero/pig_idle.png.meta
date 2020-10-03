@@ -1,31 +1,25 @@
 fileFormatVersion: 2
-guid: d2495d8b55163ec4898add94012425dd
+guid: 42abeff26343de8468bf29c8c39b0e49
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1459338478168144439
-    second: pig_run_0
+      213: 7231590700559611676
+    second: pig_idle_0
   - first:
-      213: 7321306384419527979
-    second: pig_run_1
+      213: -297117766131040054
+    second: pig_idle_1
   - first:
-      213: 180291258168312392
-    second: pig_run_2
+      213: 3787328308158522349
+    second: pig_idle_2
   - first:
-      213: 8740722983855587369
-    second: pig_run_3
+      213: 6846970685850597124
+    second: pig_idle_3
   - first:
-      213: 5537276945768238842
-    second: pig_run_4
+      213: -5421493161293530165
+    second: pig_idle_4
   - first:
-      213: 5380896565057196411
-    second: pig_run_5
-  - first:
-      213: 3926739973383000
-    second: pig_run_6
-  - first:
-      213: -8374135613128818231
-    second: pig_run_7
+      213: 774031534337324744
+    second: pig_idle_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,12 +129,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pig_run_0
+      name: pig_idle_0
       rect:
         serializedVersion: 2
         x: 8
         y: 0
-        width: 32
+        width: 33
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -149,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73a754e2d9c904410800000000000000
-      internalID: 1459338478168144439
+      spriteID: c17bfd37d65cb5460800000000000000
+      internalID: 7231590700559611676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pig_run_1
+      name: pig_idle_1
       rect:
         serializedVersion: 2
         x: 58
@@ -170,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2d102fdd518a9560800000000000000
-      internalID: 7321306384419527979
+      spriteID: ac04d4547fc60ebf0800000000000000
+      internalID: -297117766131040054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pig_run_2
+      name: pig_idle_2
       rect:
         serializedVersion: 2
         x: 108
@@ -191,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8420b3fa1f5808200800000000000000
-      internalID: 180291258168312392
+      spriteID: de3e197b70b4f8430800000000000000
+      internalID: 3787328308158522349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pig_run_3
+      name: pig_idle_3
       rect:
         serializedVersion: 2
         x: 158
@@ -212,19 +206,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9200ec45e394d4970800000000000000
-      internalID: 8740722983855587369
+      spriteID: 40733addf83550f50800000000000000
+      internalID: 6846970685850597124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pig_run_4
+      name: pig_idle_4
       rect:
         serializedVersion: 2
         x: 208
         y: 0
-        width: 32
+        width: 33
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -233,19 +227,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afec97f5b0c58dc40800000000000000
-      internalID: 5537276945768238842
+      spriteID: bcbb3e0b1bcf2c4b0800000000000000
+      internalID: -5421493161293530165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pig_run_5
+      name: pig_idle_5
       rect:
         serializedVersion: 2
         x: 258
         y: 0
-        width: 33
+        width: 32
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -254,50 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b719a5daae8ccaa40800000000000000
-      internalID: 5380896565057196411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pig_run_6
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 0
-        width: 33
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8532d356953fd0000800000000000000
-      internalID: 3926739973383000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pig_run_7
-      rect:
-        serializedVersion: 2
-        x: 358
-        y: 0
-        width: 33
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c14286270819cb80800000000000000
-      internalID: -8374135613128818231
+      spriteID: 8c670295499edba00800000000000000
+      internalID: 774031534337324744
       vertices: []
       indices: 
       edges: []
