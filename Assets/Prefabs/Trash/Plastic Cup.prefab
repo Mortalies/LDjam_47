@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2241856719695484637}
   - component: {fileID: 2241856719695484577}
   m_Layer: 0
-  m_Name: Metal Trash
-  m_TagString: Metal
+  m_Name: Plastic Cup
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300084, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34b0a428dd26245cd98773b43efaa520, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03949015, y: 0.32171047}
-  m_Size: {x: 1.0709032, y: 0.6019484}
-  m_Direction: 1
+  m_Offset: {x: 0.015327212, y: 0.48377818}
+  m_Size: {x: 0.6869025, y: 0.9663457}
+  m_Direction: 0
 --- !u!50 &2241856719695484637
 Rigidbody2D:
   serializedVersion: 4
