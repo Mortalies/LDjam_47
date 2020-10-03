@@ -19,6 +19,7 @@ public class CharacterScript : MonoBehaviour
     private float velocityX;
     private Vector3 startJoinPointLocalPosition;
     private GameObject joinedObject;
+    private bool down;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class CharacterScript : MonoBehaviour
         velocityX = -(tempPos.x - transform.position.x) / Time.fixedDeltaTime;
         velocityY = - Mathf.Round((tempPos.y - transform.position.y) / Time.fixedDeltaTime);
         tempPos = transform.position;
+
         //print(velocityY);
     }
     private void Update()
@@ -67,12 +69,18 @@ public class CharacterScript : MonoBehaviour
                 joinedObject.GetComponent<TrashScript>().DetachObject();
             }
         }
-
+        down = false;
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            down = true;
+        }
+            print(Input.GetAxisRaw("Vertical"));
         AnimatorParam(); //передача парметров в аниматор контроллер
     }
+   
     void AnimatorParam()
     {
-        anim.SetFloat("speed.x", Mathf.Abs(velocityX));
+        anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         anim.SetFloat("speed.y", velocityY);
     }
     void Jump(float multiplier)
@@ -81,7 +89,7 @@ public class CharacterScript : MonoBehaviour
     }
     void Move()
     {
-        moveTemp.x = Input.GetAxis("Horizontal");
+        moveTemp.x = Input.GetAxisRaw("Horizontal");
         
         if (moveTemp.x > 0.01f)
         {
@@ -99,17 +107,27 @@ public class CharacterScript : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 1f);
         Debug.DrawRay(transform.position, -transform.up, Color.red, 2f);
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
             onGround = true;
             doubleJump = false;
             anim.SetBool("grounded", true);
+
         }
         else
         {
             onGround = false;
             anim.SetBool("grounded", false);
         }
+
+        if (down)
+        {
+            if (hit.transform.GetComponent<LadderScript>() != null)
+            {
+                hit.transform.GetComponent<LadderScript>().DisableCollider();
+            }
+        }
+
     }
     public void ChangeJoinedObject(GameObject obj)
     {
@@ -119,9 +137,6 @@ public class CharacterScript : MonoBehaviour
     {
         return joinedObject;
     }
-    public void PutObjectToUrn()
-    {
-
-    }
+    
 }
 
