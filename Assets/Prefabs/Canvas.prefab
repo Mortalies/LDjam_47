@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 275103333}
   - component: {fileID: 275103332}
   m_Layer: 5
-  m_Name: Score
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -77,7 +77,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Total score:'
+  m_Text: 'Timer:'
 --- !u!1 &373662407
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScore: 10
+  maxTimer: 0
   scoreImg: {fileID: 6084301944528625211}
+  timerText: {fileID: 275103332}
 --- !u!1 &5367308773789925037
 GameObject:
   m_ObjectHideFlags: 0

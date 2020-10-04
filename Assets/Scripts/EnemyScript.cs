@@ -7,10 +7,8 @@ public class EnemyScript : MonoBehaviour
     public float enemyForceValue = 5f;
     public bool canWalk;
     public bool right;
-    public float path = 5f;
     public float speed = 1f;
     private Vector3 distanaton;
-    private Vector3 startPostition;
     private Vector3 tempPos;
     float velocityX;
 
@@ -29,7 +27,6 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        startPostition = transform.position;
         if (right) 
         {
             distanaton = transform.right;

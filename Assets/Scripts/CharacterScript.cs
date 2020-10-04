@@ -168,6 +168,9 @@ public class CharacterScript : MonoBehaviour
     {
         canWalk = true;
     }
-    
+    public void RemoveJoinedObject()
+    {
+        Destroy(joinedObject.gameObject);
+    }
 }
 
