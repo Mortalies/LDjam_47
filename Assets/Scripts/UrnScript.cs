@@ -12,10 +12,12 @@ public class UrnScript : MonoBehaviour
     public ObjectTag myObjectType = ObjectTag.Plastic; //название материала
     private string tagName = "Plastic";
     private SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
     private void Awake()
     {
         tagName = myObjectType.ToString();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -28,6 +30,7 @@ public class UrnScript : MonoBehaviour
             Debug.Log(tagName + " with name " + collision.gameObject.name + " was destroyed");
             Destroy(collision.gameObject);
             GameObject.Find("GameController").GetComponent<GameControllerScript>().ChangeScore(1);
+            audioSource.Play();
         }
     }
     void SwitchColor()

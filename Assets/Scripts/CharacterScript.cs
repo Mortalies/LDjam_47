@@ -7,9 +7,11 @@ public class CharacterScript : MonoBehaviour
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
     public float stopWalkingTimer = 3f;
+    public AudioClip jumpSound;
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
+    
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -24,6 +26,7 @@ public class CharacterScript : MonoBehaviour
     private GameObject joinedObject;
     private bool down; //проверка нажатия конпки вниз
     private bool canWalk; //застенен ли игрок
+    private AudioSource audioSource;
 
 
     private void Awake()
@@ -31,6 +34,7 @@ public class CharacterScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -106,6 +110,7 @@ public class CharacterScript : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
             anim.SetTrigger("Jump");
+            audioSource.PlayOneShot(jumpSound);
             Invoke("ChangeCanJump", jumpTimer);
         }
     }

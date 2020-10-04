@@ -10,7 +10,7 @@ public class GameControllerScript : MonoBehaviour
     public float maxTimer;
     private int score;
     public Image scoreImg;
-    public Text timerText;
+    //public Text timerText;
     public Image timerImg;
     private GameObject player;
     private float timer;
@@ -23,7 +23,7 @@ public class GameControllerScript : MonoBehaviour
         score = 0;
         ChangeScore(0);
         timer = maxTimer;
-        timerText.text = timer.ToString("#.#");
+        //timerText.text = timer.ToString("#.#");
         player = GameObject.Find("Player");
         startTimer = false;
         timerImg.fillAmount = timer / maxTimer;
