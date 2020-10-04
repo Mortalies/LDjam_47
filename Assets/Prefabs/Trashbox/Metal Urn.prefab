@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1748311179876019438}
   - component: {fileID: 1748311179876019437}
   - component: {fileID: 7257694310105503464}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Metal Urn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

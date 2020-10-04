@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CharacterScript : MonoBehaviour
 {
     [Header("Передвижение")]
@@ -7,7 +7,10 @@ public class CharacterScript : MonoBehaviour
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
     public float stopWalkingTimer = 3f;
+    [Header("Звуки")]
     public AudioClip jumpSound;
+    public AudioClip stepSoundPark;
+    public AudioClip stepSoundBulding;
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
@@ -28,7 +31,7 @@ public class CharacterScript : MonoBehaviour
     private bool canWalk; //застенен ли игрок
     private AudioSource audioSource;
 
-
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -88,10 +91,10 @@ public class CharacterScript : MonoBehaviour
             //print(Input.GetAxisRaw("Vertical"));
         AnimatorParam(); //передача парметров в аниматор контроллер
     }
-   
+    
     void AnimatorParam()
     {
-        if (canWalk)
+        if (canWalk && onGround)
         {
             anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         }
@@ -185,5 +188,25 @@ public class CharacterScript : MonoBehaviour
         canWalk = true;
     }
     
+    void StepEvent()
+    {
+        string level = SceneManager.GetActiveScene().name;
+        switch (level) 
+        {
+            case "Level 1":
+                audioSource.PlayOneShot(stepSoundPark);
+                break;
+            case "Level 2":
+                audioSource.PlayOneShot(stepSoundBulding);
+                break;
+            case "Level 3":
+                audioSource.PlayOneShot(stepSoundBulding);
+                break;
+            default:
+                break;
+
+
+        }
+    }
 }
 

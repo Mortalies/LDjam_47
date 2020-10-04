@@ -63,34 +63,21 @@ public class TrashScript : MonoBehaviour
         switch (tag)
         {
             case "Plastic":
-                audioSource.PlayOneShot(takeTrashSounds[0]);
+                audioSource.PlayOneShot(takeTrashSounds[1], 1f);
                 break;
             case "Paper":
-                audioSource.PlayOneShot(takeTrashSounds[1]);
+                audioSource.PlayOneShot(takeTrashSounds[1], 1f);
                 break;
             case "Glass":
-                audioSource.PlayOneShot(takeTrashSounds[2]);
+                audioSource.PlayOneShot(takeTrashSounds[1], 1f);
                 break;
             case "Metal":
-                audioSource.PlayOneShot(takeTrashSounds[3]);
+                audioSource.PlayOneShot(takeTrashSounds[1], 1f);
                 break;
             default:
                 break;
         }
     }
-    
-    
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    print("collision");
-    //    if(collision.CompareTag("Player"))
-    //    {
-    //        print("collision player");
-    //        joinPosition = collision.gameObject.transform.Find("JoinPoint").gameObject;
-    //        joinToPlayer = true;
-    //    }
-    //}
     private void Update()
     {
         if (joinedToPlayer)

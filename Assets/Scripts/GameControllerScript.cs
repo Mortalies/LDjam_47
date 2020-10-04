@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameControllerScript : MonoBehaviour
 {
     public int maxScore = 10;
-    public float maxTimer;
+    public float maxTimer = 10f;
     private int score;
     public Image scoreImg;
     //public Text timerText;

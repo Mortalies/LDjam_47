@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1748311179876019438}
   - component: {fileID: 1748311179876019437}
   - component: {fileID: 8690248168975356259}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Paper Urn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3c98d237f9e05124a90fdd3917bbed6f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4506330f3dda316439f3a6d995f34a77, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
