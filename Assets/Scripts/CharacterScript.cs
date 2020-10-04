@@ -6,6 +6,7 @@ public class CharacterScript : MonoBehaviour
     public float speed = 4f;
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
+    public float stopWalkingTimer = 3f;
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
@@ -21,7 +22,9 @@ public class CharacterScript : MonoBehaviour
     private float velocityX;
     private Vector3 startJoinPointLocalPosition;
     private GameObject joinedObject;
-    private bool down;
+    private bool down; //проверка нажатия конпки вниз
+    private bool canWalk; //застенен ли игрок
+
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class CharacterScript : MonoBehaviour
         joinPoint = transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
         startJoinPointLocalPosition = joinPoint.transform.localPosition;
         canJump = true;
+        canWalk = true;
     }
     private void FixedUpdate()
     {
@@ -42,42 +46,53 @@ public class CharacterScript : MonoBehaviour
         tempPos = transform.position;
 
         CheckGround(); //проверка земли каждый кадр
-
-        if (Input.GetButton("Horizontal"))
+        if (canWalk)
         {
-            Move();
+            if (Input.GetButton("Horizontal"))
+            {
+                Move();
+            }
         }
         //print(velocityY);
     }
     private void Update()
     {
-        
-        if (Input.GetButtonDown("Jump"))
+        if (canWalk)
         {
-            if (onGround)
+            if (Input.GetButtonDown("Jump"))
             {
-                Jump(1);
+                if (onGround)
+                {
+                    Jump(1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (joinedObject != null)
+                {
+                    joinedObject.GetComponent<TrashScript>().DetachObject();
+                }
+            }
+            down = false;
+            if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                down = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (joinedObject != null)
-            {
-                joinedObject.GetComponent<TrashScript>().DetachObject();
-            }
-        }
-        down = false;
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            down = true;
-        }
-            print(Input.GetAxisRaw("Vertical"));
+            //print(Input.GetAxisRaw("Vertical"));
         AnimatorParam(); //передача парметров в аниматор контроллер
     }
    
     void AnimatorParam()
     {
-        anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        if (canWalk)
+        {
+            anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        }
+        else
+        {
+            anim.SetFloat("speed.x", 0f);
+        }
         anim.SetFloat("speed.y", velocityY);
         anim.SetBool("withObj", joinedObject);
     }
@@ -143,6 +158,19 @@ public class CharacterScript : MonoBehaviour
     {
         return joinedObject;
     }
-    
+    public void StopWalking()
+    {
+        canWalk = false;
+        Invoke("StartWalking", stopWalkingTimer);
+
+    }
+    void StartWalking()
+    {
+        canWalk = true;
+    }
+    public void RemoveJoinedObject()
+    {
+        Destroy(joinedObject.gameObject);
+    }
 }
 

@@ -157,6 +157,7 @@ MonoBehaviour:
   speed: 3
   jumpForce: 75
   jumpTimer: 0.5
+  stopWalkingTimer: 3
 --- !u!1 &4199070685250358659
 GameObject:
   m_ObjectHideFlags: 0
