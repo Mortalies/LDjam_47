@@ -21,8 +21,13 @@ public class EnemyScript : MonoBehaviour
             collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             print("force");
+            distanaton = -distanaton;
         }
-        distanaton = -distanaton;
+        if (collider.CompareTag("EnemyObstacle"))
+        {
+            distanaton = -distanaton;
+        }
+        
     }
     private void Start()
     {
