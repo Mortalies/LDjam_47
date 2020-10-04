@@ -14,6 +14,7 @@ public class GameControllerScript : MonoBehaviour
     private GameObject player;
     private float timer;
     private bool startTimer;
+    private GameObject obj;
 
 
     private void Start()
@@ -23,10 +24,16 @@ public class GameControllerScript : MonoBehaviour
         timer = maxTimer;
         timerText.text = timer.ToString("#.#");
         player = GameObject.Find("Player");
+        startTimer = false;
     }
     public void StartTimer()
     {
         startTimer = true;
+        obj = player.GetComponent<CharacterScript>().ReturnJoinedObject();
+    }
+    public bool ReturnStartTimer()
+    {
+        return startTimer;
     }
     private void Update()
     {
@@ -39,11 +46,13 @@ public class GameControllerScript : MonoBehaviour
         if (timer <= 0)
         {
             LoseTrash();
+            
         }
     }
     private void LoseTrash()
     {
-        player.GetComponent<CharacterScript>().RemoveJoinedObject();
+        startTimer = false;
+        Destroy(obj);
         ChangeScore(-1);
         
     }
