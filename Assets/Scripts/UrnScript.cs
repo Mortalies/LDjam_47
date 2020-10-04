@@ -27,6 +27,7 @@ public class UrnScript : MonoBehaviour
         {
             Debug.Log(tagName + " with name " + collision.gameObject.name + " was destroyed");
             Destroy(collision.gameObject);
+            GameObject.Find("GameController").GetComponent<GameControllerScript>().ChangeScore(1);
         }
     }
     void SwitchColor()
