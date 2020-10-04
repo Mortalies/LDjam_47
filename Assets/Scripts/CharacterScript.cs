@@ -133,7 +133,7 @@ public class CharacterScript : MonoBehaviour
     void CheckGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 1f);
-        Debug.DrawRay(transform.position, -transform.up, Color.red, 2f);
+        Debug.DrawRay(transform.position, -transform.up, Color.red, 1f);
         if (hit.collider != null)
         {
             onGround = true;
@@ -150,6 +150,11 @@ public class CharacterScript : MonoBehaviour
             {
                 hit.transform.GetComponent<LadderScript>().DisableCollider();
             }
+            if (hit.transform.GetComponent<PlatformScript>() != null)
+            {
+                hit.transform.GetComponent<PlatformScript>().DisableCollider();
+            }
+
         }
 
     }
