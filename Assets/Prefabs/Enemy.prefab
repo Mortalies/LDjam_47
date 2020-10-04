@@ -115,7 +115,6 @@ MonoBehaviour:
   enemyForceValue: 50
   canWalk: 1
   right: 1
-  path: 5
   speed: 2
 --- !u!50 &1689101179
 Rigidbody2D:

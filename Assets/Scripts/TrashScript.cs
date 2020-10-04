@@ -28,6 +28,8 @@ public class TrashScript : MonoBehaviour
                 joinedToPlayer = true;
                 transform.GetComponent<Collider2D>().enabled = false;
                 collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
+                GameObject.Find("GameController").GetComponent<GameControllerScript>().StartTimer();
+
             }
         }
     }
