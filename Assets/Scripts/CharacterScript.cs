@@ -38,6 +38,7 @@ public class CharacterScript : MonoBehaviour
         startJoinPointLocalPosition = joinPoint.transform.localPosition;
         canJump = true;
         canWalk = true;
+        anim.SetBool("withObj", false);
     }
     private void FixedUpdate()
     {
@@ -70,6 +71,7 @@ public class CharacterScript : MonoBehaviour
             {
                 if (joinedObject != null)
                 {
+                    anim.SetBool("withObj", true);
                     joinedObject.GetComponent<TrashScript>().DetachObject();
                 }
             }
@@ -94,7 +96,7 @@ public class CharacterScript : MonoBehaviour
             anim.SetFloat("speed.x", 0f);
         }
         anim.SetFloat("speed.y", velocityY);
-        anim.SetBool("withObj", joinedObject);
+        //anim.SetBool("withObj", joinedObject);
     }
     void Jump(float multiplier)
     {
@@ -103,6 +105,7 @@ public class CharacterScript : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
+            anim.SetTrigger("Jump");
             Invoke("ChangeCanJump", jumpTimer);
         }
     }
@@ -154,9 +157,12 @@ public class CharacterScript : MonoBehaviour
     {
         joinedObject = obj; 
     }
+    
     public GameObject ReturnJoinedObject()
     {
-        return joinedObject;
+        
+            return joinedObject;
+        
     }
     public void StopWalking()
     {
@@ -168,9 +174,6 @@ public class CharacterScript : MonoBehaviour
     {
         canWalk = true;
     }
-    public void RemoveJoinedObject()
-    {
-        Destroy(joinedObject.gameObject);
-    }
+    
 }
 
