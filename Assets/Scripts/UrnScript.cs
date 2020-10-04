@@ -19,7 +19,7 @@ public class UrnScript : MonoBehaviour
     }
     private void Start()
     {
-        SwitchColor();
+        //SwitchColor();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

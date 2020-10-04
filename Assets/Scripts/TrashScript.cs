@@ -25,6 +25,7 @@ public class TrashScript : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
+            
             if (!gameControllerScript.ReturnStartTimer())
             {
                 if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
@@ -33,10 +34,19 @@ public class TrashScript : MonoBehaviour
                     joinedToPlayer = true;
                     transform.GetComponent<Collider2D>().enabled = false;
                     collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
-                    gameControllerScript.StartTimer();
-
+                    gameControllerScript.StartTimer(); //сброс таймерра
                     joinPoint.GetComponentInParent<CharacterScript>().gameObject.GetComponent<Animator>().SetBool("withObj", true);
-
+                }
+            }
+            else if (gameControllerScript.ReturnObj() == gameObject)
+            {
+                if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
+                {
+                    joinPoint = collision.transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
+                    joinedToPlayer = true;
+                    transform.GetComponent<Collider2D>().enabled = false;
+                    collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
+                    joinPoint.GetComponentInParent<CharacterScript>().gameObject.GetComponent<Animator>().SetBool("withObj", true);
                 }
             }
         }
