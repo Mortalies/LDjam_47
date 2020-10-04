@@ -5,8 +5,10 @@ public class CharacterScript : MonoBehaviour
     [Header("Передвижение")]
     public float speed = 4f;
     public float jumpForce = 1f;
+    public float jumpTimer = 0.5f;
     [Header("Взаимодействие")]
     private GameObject joinPoint;
+    private bool canJump;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -31,6 +33,7 @@ public class CharacterScript : MonoBehaviour
     {
         joinPoint = transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
         startJoinPointLocalPosition = joinPoint.transform.localPosition;
+        canJump = true;
     }
     private void FixedUpdate()
     {
@@ -81,7 +84,16 @@ public class CharacterScript : MonoBehaviour
     void Jump(float multiplier)
     {
         //rb.velocity = transform.up * jumpForce;
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (canJump)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            canJump = false;
+            Invoke("ChangeCanJump", jumpTimer);
+        }
+    }
+    void ChangeCanJump()
+    {
+        canJump = true;
     }
     void Move()
     {

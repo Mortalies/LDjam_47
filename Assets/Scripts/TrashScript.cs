@@ -6,10 +6,10 @@ public class TrashScript : MonoBehaviour
 {
     //объект разного материала должен иметь разные тэги
     //это префаб одно типа материала
-    public enum ObjectType
-    { Object0, Object1, Object2 };
-    public ObjectType myObjectType = ObjectType.Object0; //тип объекта: бутылка, чашка и тд
-    public GameObject[] objectsTypesPrefabs;
+    //public enum ObjectType
+    //{ Object0, Object1, Object2 };
+    //public ObjectType myObjectType = ObjectType.Object0; //тип объекта: бутылка, чашка и тд
+    //public GameObject[] objectsTypesPrefabs;
     private GameObject joinPoint; //объект на игроке, куда будет крепится объект
     private bool joinedToPlayer;
     
