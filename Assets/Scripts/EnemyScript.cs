@@ -8,8 +8,6 @@ public class EnemyScript : MonoBehaviour
     public bool canWalk;
     public bool right;
     public float speed = 1f;
-    [Header("Звуки удара врага")]
-    public AudioClip[] enemySounds;
     private Vector3 distanaton;
     private Vector3 tempPos;
     float velocityX;
@@ -24,7 +22,6 @@ public class EnemyScript : MonoBehaviour
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             print("force");
             distanaton = -distanaton;
-            GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);
         }
         if (collider.CompareTag("EnemyObstacle"))
         {
@@ -35,7 +32,6 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
         if (right) 
         {
             distanaton = transform.right;

@@ -9,7 +9,6 @@ TagManager:
   - Glass
   - Metal
   - EnemyObstacle
-  - Floor
   layers:
   - Default
   - TransparentFX

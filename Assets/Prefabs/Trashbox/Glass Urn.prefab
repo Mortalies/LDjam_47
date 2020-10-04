@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1748311179876019438}
   - component: {fileID: 1748311179876019437}
   - component: {fileID: -6156292642449924157}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Glass Urn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 47b4decd523380943914a6b61935bf2a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28b3f75d885258a42976516a4d2964e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

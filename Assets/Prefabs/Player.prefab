@@ -159,9 +159,7 @@ MonoBehaviour:
   jumpForce: 75
   jumpTimer: 0.5
   stopWalkingTimer: 3
-  jumpSound: {fileID: 8300000, guid: 4e0c109ebccd5344cbdc65040b4fc614, type: 3}
-  stepSoundPark: {fileID: 8300000, guid: cc0c727ca4a4d284cb6029bce481bd2d, type: 3}
-  stepSoundBulding: {fileID: 8300000, guid: f3ed0ac5b63dc1540a9e9ba2bc2ea2a8, type: 3}
+  jumpSound: {fileID: 8300000, guid: 3257cd1623ed3444eb7f7a471bfba29f, type: 3}
 --- !u!82 &-8855544397483212651
 AudioSource:
   m_ObjectHideFlags: 0
