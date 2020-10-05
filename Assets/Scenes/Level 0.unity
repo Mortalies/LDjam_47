@@ -579,7 +579,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5411206600446059305}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -689,7 +689,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5411206600446059305}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -783,6 +783,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: '- HELLO, MOM, I''VE GOT A JOB!'
       objectReference: {fileID: 0}
+    - target: {fileID: 586388526019491046, guid: 81ef4e465c1b97c40b8935565ca09322,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6794628775315966849, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
       propertyPath: m_Name
@@ -791,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 6794628775315966849, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6794628775315966850, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
@@ -831,7 +836,7 @@ PrefabInstance:
     - target: {fileID: 6794628775315966850, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6794628775315966850, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
@@ -1452,9 +1457,9 @@ RectTransform:
   - {fileID: 7599443186062435586}
   - {fileID: 4998213698694764850}
   - {fileID: 1643587543}
-  - {fileID: 983878855258040661}
   - {fileID: 1825680606}
   - {fileID: 1960505061}
+  - {fileID: 983878855258040661}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
