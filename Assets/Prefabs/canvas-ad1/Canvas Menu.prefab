@@ -874,10 +874,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5411206601007263492}
     m_Modifications:
+    - target: {fileID: 586388526019491046, guid: 81ef4e465c1b97c40b8935565ca09322,
+        type: 3}
+      propertyPath: m_Text
+      value: '- HELLO, MOM, I''VE GOT A JOB!'
+      objectReference: {fileID: 0}
     - target: {fileID: 6794628775315966849, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
       propertyPath: m_Name
       value: fade job
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794628775315966849, guid: 81ef4e465c1b97c40b8935565ca09322,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6794628775315966850, guid: 81ef4e465c1b97c40b8935565ca09322,
         type: 3}
