@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour
         if (collider.CompareTag("EnemyObstacle"))
         {
             distanaton = -distanaton;
+            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
         }
         
     }
@@ -34,10 +35,12 @@ public class EnemyScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (right) 
         {
+            GetComponent<SpriteRenderer>().flipX = true;
             distanaton = transform.right;
         }
         else
         {
+            GetComponent<SpriteRenderer>().flipX = false;
             distanaton = -transform.right;
         }
     }
