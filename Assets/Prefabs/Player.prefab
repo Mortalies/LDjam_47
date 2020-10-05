@@ -164,6 +164,7 @@ MonoBehaviour:
   stepSoundParkVolume: 0.25
   stepSoundOffice: {fileID: 8300000, guid: f3ed0ac5b63dc1540a9e9ba2bc2ea2a8, type: 3}
   stepSoundOfficeVolume: 0.25
+  charSound: {fileID: 8300000, guid: 3742566ad53d85941ba6ab80b51aef89, type: 3}
 --- !u!82 &-8855544397483212651
 AudioSource:
   m_ObjectHideFlags: 0

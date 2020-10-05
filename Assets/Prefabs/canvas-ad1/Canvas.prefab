@@ -225,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4649525281374558569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,6 +822,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14b5111064cfd3c4481ad0fc4ff4b3f3, type: 3}
   - {fileID: 8300000, guid: 31186fe2c34e00d459183187d4767e7b, type: 3}
   musicVolume: 1
+  parkMusicVolume: 0
   spawnObj: []
   fadeImg: {fileID: 0}
   currentLevelInBuild: 0
@@ -1194,6 +1195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fade promotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337622120773905485, guid: 89b91558ddbcb9c4695715a8768463c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3337622120773905486, guid: 89b91558ddbcb9c4695715a8768463c5,
         type: 3}

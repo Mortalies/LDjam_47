@@ -15,7 +15,7 @@ public class CharacterScript : MonoBehaviour
     public float stepSoundParkVolume = 0.5f;
     public AudioClip stepSoundOffice;
     public float stepSoundOfficeVolume = 0.5f;
-
+    public AudioClip charSound;
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
@@ -35,6 +35,7 @@ public class CharacterScript : MonoBehaviour
     private bool down; //проверка нажатия конпки вниз
     private bool canWalk; //застенен ли игрок
     private AudioSource audioSource;
+    
 
 
     private void Awake()
@@ -101,7 +102,11 @@ public class CharacterScript : MonoBehaviour
                 down = true;
             }
         }
-            //print(Input.GetAxisRaw("Vertical"));
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            audioSource.PlayOneShot(charSound);
+        }
+        //print(Input.GetAxisRaw("Vertical"));
         AnimatorParam(); //передача парметров в аниматор контроллер
     }
    

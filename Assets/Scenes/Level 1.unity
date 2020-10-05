@@ -3715,6 +3715,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 589131186567970647, guid: 11bd855c480c7d44ca0313d17097bc65,
+        type: 3}
+      propertyPath: m_Text
+      value: '- HELLO, MOM, I''VE GOT A PROMOTION!'
+      objectReference: {fileID: 0}
     - target: {fileID: 589131186567970649, guid: 11bd855c480c7d44ca0313d17097bc65,
         type: 3}
       propertyPath: m_IsActive
@@ -3884,6 +3889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: parkMusicVolume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196919618246774067, guid: 11bd855c480c7d44ca0313d17097bc65,
+        type: 3}
+      propertyPath: maxTimer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11bd855c480c7d44ca0313d17097bc65, type: 3}
