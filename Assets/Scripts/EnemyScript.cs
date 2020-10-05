@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<CharacterScript>().UnJoinObj();
-            Vector2 forceVector = (collider.transform.position - transform.position + Vector3.up * 2f) * 0.6f;
+            Vector2 forceVector = (collider.transform.position - transform.position + Vector3.up * 2f) * 0.8f;
             collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             distanaton = -distanaton;
