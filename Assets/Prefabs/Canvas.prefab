@@ -778,7 +778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba23f1abbfe166445af1c4a3e5207b88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86d18dc18f6229e4ba8ebd9ecab24d98, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -918,6 +918,7 @@ MonoBehaviour:
   musicVolume: 1
   spawnObj: []
   fadeImg: {fileID: 1958273948}
+  currentLevelInBuild: 0
 --- !u!82 &8349774786300236744
 AudioSource:
   m_ObjectHideFlags: 0
