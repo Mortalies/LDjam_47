@@ -11,6 +11,8 @@ public class MenuControllerScript : MonoBehaviour
     public GameObject lastBackGround;
     public AudioClip musicMenu;
     public float musicVolume = 1f;
+    public Image fadeImg;
+    public int currentLevelInBuild;
 
     void Start()
     {
@@ -24,7 +26,8 @@ public class MenuControllerScript : MonoBehaviour
     }
     public void LoadLevel(string levelName)
     {
-        SceneManager.LoadScene(levelName);
+        //SceneManager.LoadScene(levelName);
+        StartCoroutine(Fading());
     }
     void PlayMusic()
     {
@@ -32,5 +35,18 @@ public class MenuControllerScript : MonoBehaviour
         GetComponent<AudioSource>().loop = true;
         GetComponent<AudioSource>().volume = musicVolume;
         GetComponent<AudioSource>().Play();
+    }
+    void WinGame()
+    {
+        print("You win");
+        StartCoroutine(Fading());
+
+    }
+    IEnumerator Fading()
+    {
+        fadeImg.gameObject.GetComponent<Animator>().SetBool("Fade", true);
+        yield return new WaitUntil(() => fadeImg.color.a == 1);
+        SceneManager.LoadScene(currentLevelInBuild + 1);
+
     }
 }
