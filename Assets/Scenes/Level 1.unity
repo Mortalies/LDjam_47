@@ -3720,6 +3720,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: '- HELLO, MOM, I''VE GOT A PROMOTION!'
       objectReference: {fileID: 0}
+    - target: {fileID: 589131186567970647, guid: 11bd855c480c7d44ca0313d17097bc65,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 589131186567970649, guid: 11bd855c480c7d44ca0313d17097bc65,
         type: 3}
       propertyPath: m_IsActive
