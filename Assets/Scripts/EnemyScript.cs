@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3 distanaton;
     private Vector3 tempPos;
     float velocityX;
+    public AudioClip[] enemySounds;
 
     Rigidbody2D rb;
     private void OnTriggerEnter2D(Collider2D collider)
@@ -22,6 +23,8 @@ public class EnemyScript : MonoBehaviour
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             print("force");
             distanaton = -distanaton;
+            GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);
+
         }
         if (collider.CompareTag("EnemyObstacle"))
         {

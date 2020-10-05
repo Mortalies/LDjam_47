@@ -43,8 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9184ce44b70ef3b4aa80c8fd1bb2f7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashPrefabs:
-  - {fileID: 2241856719695484636, guid: 5ffee45c339450a42880358ce1aa161a, type: 3}
+  trashPlastic:
   - {fileID: 2241856719695484636, guid: e3478ef3f9ffe304bad7cfaa837b9037, type: 3}
+  - {fileID: 2241856719695484636, guid: 9ab0b0c489c924ecc8b25d5331fd6320, type: 3}
+  trashPaper:
+  - {fileID: 2241856719695484636, guid: 5ffee45c339450a42880358ce1aa161a, type: 3}
+  - {fileID: 2241856719695484636, guid: 5d08b075a6acb4ba3a78035c2276f9b4, type: 3}
+  trashMetal:
+  - {fileID: 2241856719695484636, guid: 31f6abbddf81241c79af687fa3e3c959, type: 3}
+  - {fileID: 2241856719695484636, guid: bebfda097ef995f44968695479893f6d, type: 3}
+  trashGlass:
   - {fileID: 2241856719695484636, guid: 822bf570ba1dad243b1229ba7c9b691c, type: 3}
-  keyN: 2000
+  - {fileID: 2241856719695484636, guid: 463a3716a39784bccaedb34bf047987e, type: 3}
+  plastic: 0
+  paper: 0
+  metal: 0
+  glass: 0
