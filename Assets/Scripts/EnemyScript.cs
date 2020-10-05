@@ -18,15 +18,21 @@ public class EnemyScript : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            Vector2 forceVector = collider.transform.position - transform.position + Vector3.up * 2f;
+            collider.gameObject.GetComponent<CharacterScript>().UnJoinObj();
+            Vector2 forceVector = (collider.transform.position - transform.position + Vector3.up * 2f) * 0.6f;
             collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
-            
             distanaton = -distanaton;
             GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);
             GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
 
-        }
+        } 
+        if(collider.CompareTag("Plastic") || collider.CompareTag("Metal") || collider.CompareTag("Paper") || collider.CompareTag("Glass"))
+        {
+            print("plastic or else");
+            Vector2 forceVector = (collider.transform.position - transform.position + Vector3.up * 1f) * 0.25f;
+            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
+        } 
         if (collider.CompareTag("EnemyObstacle"))
         {
             distanaton = -distanaton;

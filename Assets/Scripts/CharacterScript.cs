@@ -68,6 +68,14 @@ public class CharacterScript : MonoBehaviour
         }
         //print(velocityY);
     }
+    public void UnJoinObj()
+    {
+        if (joinedObject != null)
+        {
+            anim.SetBool("withObj", true);
+            joinedObject.GetComponent<TrashScript>().DetachObject();
+        }
+    }
     private void Update()
     {
         if (canWalk)
