@@ -82,8 +82,8 @@ GameObject:
   - component: {fileID: 8125767485388618265}
   - component: {fileID: 960176538223816378}
   m_Layer: 0
-  m_Name: Platform
-  m_TagString: Untagged
+  m_Name: PlatformTrigger
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
