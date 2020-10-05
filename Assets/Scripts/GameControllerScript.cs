@@ -16,6 +16,11 @@ public class GameControllerScript : MonoBehaviour
     private float timer;
     private bool startTimer;
     private GameObject obj;
+    public AudioClip[] music;
+    public float musicVolume;
+    public GameObject[] spawnObj;
+    public Image fadeImg;
+    public int currentLevelInBuild;
 
 
     private void Start()
@@ -27,6 +32,7 @@ public class GameControllerScript : MonoBehaviour
         player = GameObject.Find("Player");
         startTimer = false;
         timerImg.fillAmount = timer / maxTimer;
+        PlayMusic();
     }
     public void StartTimer()
     {
@@ -59,13 +65,17 @@ public class GameControllerScript : MonoBehaviour
     private void LoseTrash()
     {
         startTimer = false;
+        player.GetComponent<Animator>().SetBool("withObj", false);
         Destroy(obj);
         ChangeScore(-1);
-        
+        Spawn();
+        Spawn();
+
     }
-
-
-
+    void Spawn()
+    {
+        spawnObj[Random.Range(0, spawnObj.Length - 1)].GetComponent<TrashSpawnerScript>().SpawnObj();
+    }
     public void ChangeScore(int _score)
     {
         score = score + _score;
@@ -89,6 +99,15 @@ public class GameControllerScript : MonoBehaviour
     void WinGame()
     {
         print("You win");
+        StartCoroutine(Fading());
+
+    }
+    IEnumerator Fading()
+    {
+        fadeImg.gameObject.GetComponent<Animator>().SetBool("Fade", true);
+        yield return new WaitUntil(() => fadeImg.color.a == 1);
+        SceneManager.LoadScene(currentLevelInBuild + 1);
+
     }
 
 
@@ -96,6 +115,32 @@ public class GameControllerScript : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
     }
+    public void ChangeSound()
+    {
+
+    }
+    void PlayMusic()
+    {
+        string levelName = SceneManager.GetActiveScene().name;
+        switch (levelName)
+        {
+            case "Level 1":
+                GetComponent<AudioSource>().clip = music[0];
+                break;
+            case "Level 2":
+                GetComponent<AudioSource>().clip = music[1];
+                break;
+            case "Level 3":
+                GetComponent<AudioSource>().clip = music[2];
+                break;
+            default:
+                break;
+        }
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().volume = musicVolume;
+        GetComponent<AudioSource>().Play();
+    }
+
     
 
 

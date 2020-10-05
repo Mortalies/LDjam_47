@@ -82,8 +82,8 @@ GameObject:
   - component: {fileID: 6637200047115042863}
   - component: {fileID: 8856222854792693731}
   m_Layer: 0
-  m_Name: Boxes 1 1
-  m_TagString: Untagged
+  m_Name: Boxes with box, not use
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -68,6 +68,14 @@ public class CharacterScript : MonoBehaviour
         }
         //print(velocityY);
     }
+    public void UnJoinObj()
+    {
+        if (joinedObject != null)
+        {
+            anim.SetBool("withObj", true);
+            joinedObject.GetComponent<TrashScript>().DetachObject();
+        }
+    }
     private void Update()
     {
         if (canWalk)
@@ -101,7 +109,7 @@ public class CharacterScript : MonoBehaviour
     {
         if (canWalk)
         {
-            anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+                anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         }
         else
         {
@@ -145,29 +153,35 @@ public class CharacterScript : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 1f);
-        Debug.DrawRay(transform.position, -transform.up, Color.red, 1f);
-        if (hit.collider != null)
-        {
-            onGround = true;
-            anim.SetBool("grounded", true);
-        }
-        else
-        {
-            onGround = false;
-            anim.SetBool("grounded", false);
-        }
-        if (down)
-        {
-            if (hit.transform.GetComponent<LadderScript>() != null)
-            {
-                hit.transform.GetComponent<LadderScript>().DisableCollider();
-            }
-            if (hit.transform.GetComponent<PlatformScript>() != null)
-            {
-                hit.transform.GetComponent<PlatformScript>().DisableCollider();
-            }
+        RaycastHit2D[] hits = { 
+            Physics2D.Raycast(transform.position + Vector3.right * 0f, -transform.up, 1f) };
+        //hits[0] = Physics2D.Raycast(transform.position, -transform.up, 1f);
 
+        Debug.DrawRay(transform.position + Vector3.right * 0f, -transform.up, Color.red, 1f);
+
+        foreach (RaycastHit2D hit in hits) {
+            if (hit.collider != null)
+            {
+                onGround = true;
+                anim.SetBool("grounded", true);
+            }
+            else
+            {
+                onGround = false;
+                anim.SetBool("grounded", false);
+            }
+            if (down)
+            {
+                if (hit.transform.GetComponent<LadderScript>() != null)
+                {
+                    hit.transform.GetComponent<LadderScript>().DisableCollider();
+                }
+                if (hit.transform.GetComponent<PlatformScript>() != null)
+                {
+                    hit.transform.GetComponent<PlatformScript>().DisableCollider();
+                }
+
+            }
         }
 
     }
