@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7691176277899284745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -30.064346, y: 3.9860277, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,8 +99,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 2.8125}
+  m_Offset: {x: -0.0979929, y: 0}
+  m_Size: {x: 1.1708317, y: 2.8125}
   m_Direction: 0
 --- !u!114 &3125968394681692607
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyForceValue: 50
-  canWalk: 1
+  canWalk: 0
   right: 1
   speed: 2
 --- !u!50 &1689101179
@@ -149,7 +149,7 @@ Animator:
   m_GameObject: {fileID: 7691176277899284745}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79a55b752a6d5dc49a53b25a8fdf535a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
