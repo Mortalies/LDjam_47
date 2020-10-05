@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterScript : MonoBehaviour
 {
@@ -7,7 +8,14 @@ public class CharacterScript : MonoBehaviour
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
     public float stopWalkingTimer = 3f;
+    [Header("Звуки")]
+
     public AudioClip jumpSound;
+    public AudioClip stepSoundPark;
+    public float stepSoundParkVolume = 0.5f;
+    public AudioClip stepSoundOffice;
+    public float stepSoundOfficeVolume = 0.5f;
+
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
@@ -185,5 +193,23 @@ public class CharacterScript : MonoBehaviour
         canWalk = true;
     }
     
+    void StepEvent()
+    {
+        string levelName = SceneManager.GetActiveScene().name; 
+        switch (levelName)
+        {
+            case "Level 1":
+                audioSource.PlayOneShot(stepSoundPark, stepSoundParkVolume);
+                break;
+            case "Level 2":
+                audioSource.PlayOneShot(stepSoundOffice, stepSoundOfficeVolume);
+                break;
+            case "Level 3":
+                audioSource.PlayOneShot(stepSoundOffice, stepSoundOfficeVolume);
+                break;
+            default:
+                break;
+        }
+    }
 }
 
