@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterScript : MonoBehaviour
 {
@@ -7,9 +8,18 @@ public class CharacterScript : MonoBehaviour
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
     public float stopWalkingTimer = 3f;
+    [Header("Звуки")]
+
+    public AudioClip jumpSound;
+    public AudioClip stepSoundPark;
+    public float stepSoundParkVolume = 0.5f;
+    public AudioClip stepSoundOffice;
+    public float stepSoundOfficeVolume = 0.5f;
+
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
+    
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -24,6 +34,7 @@ public class CharacterScript : MonoBehaviour
     private GameObject joinedObject;
     private bool down; //проверка нажатия конпки вниз
     private bool canWalk; //застенен ли игрок
+    private AudioSource audioSource;
 
 
     private void Awake()
@@ -31,6 +42,7 @@ public class CharacterScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -106,6 +118,7 @@ public class CharacterScript : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
             anim.SetTrigger("Jump");
+            audioSource.PlayOneShot(jumpSound);
             Invoke("ChangeCanJump", jumpTimer);
         }
     }
@@ -133,7 +146,7 @@ public class CharacterScript : MonoBehaviour
     void CheckGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 1f);
-        Debug.DrawRay(transform.position, -transform.up, Color.red, 2f);
+        Debug.DrawRay(transform.position, -transform.up, Color.red, 1f);
         if (hit.collider != null)
         {
             onGround = true;
@@ -150,6 +163,11 @@ public class CharacterScript : MonoBehaviour
             {
                 hit.transform.GetComponent<LadderScript>().DisableCollider();
             }
+            if (hit.transform.GetComponent<PlatformScript>() != null)
+            {
+                hit.transform.GetComponent<PlatformScript>().DisableCollider();
+            }
+
         }
 
     }
@@ -175,5 +193,23 @@ public class CharacterScript : MonoBehaviour
         canWalk = true;
     }
     
+    void StepEvent()
+    {
+        string levelName = SceneManager.GetActiveScene().name; 
+        switch (levelName)
+        {
+            case "Level 1":
+                audioSource.PlayOneShot(stepSoundPark, stepSoundParkVolume);
+                break;
+            case "Level 2":
+                audioSource.PlayOneShot(stepSoundOffice, stepSoundOfficeVolume);
+                break;
+            case "Level 3":
+                audioSource.PlayOneShot(stepSoundOffice, stepSoundOfficeVolume);
+                break;
+            default:
+                break;
+        }
+    }
 }
 

@@ -10,21 +10,27 @@ public class TrashScript : MonoBehaviour
     //{ Object0, Object1, Object2 };
     //public ObjectType myObjectType = ObjectType.Object0; //тип объекта: бутылка, чашка и тд
     //public GameObject[] objectsTypesPrefabs;
+    [Header ("Звуки подбора мусора")]
+    public AudioClip[] takeTrashSounds;
     private GameObject joinPoint; //объект на игроке, куда будет крепится объект
     private bool joinedToPlayer;
     GameControllerScript gameControllerScript;
-    
+    AudioSource audioSource;
+
+
 
     private void Start()
     {
         joinedToPlayer = false;
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        audioSource = GetComponent<AudioSource>();
         
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
+            
             if (!gameControllerScript.ReturnStartTimer())
             {
                 if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
@@ -33,27 +39,45 @@ public class TrashScript : MonoBehaviour
                     joinedToPlayer = true;
                     transform.GetComponent<Collider2D>().enabled = false;
                     collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
-                    gameControllerScript.StartTimer();
-
+                    gameControllerScript.StartTimer(); //сброс таймерра
                     joinPoint.GetComponentInParent<CharacterScript>().gameObject.GetComponent<Animator>().SetBool("withObj", true);
-
+                    PlayTrashSound();
+                }
+            }
+            else if (gameControllerScript.ReturnObj() == gameObject)
+            {
+                if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
+                {
+                    joinPoint = collision.transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
+                    joinedToPlayer = true;
+                    transform.GetComponent<Collider2D>().enabled = false;
+                    collision.gameObject.GetComponent<CharacterScript>().ChangeJoinedObject(gameObject);
+                    joinPoint.GetComponentInParent<CharacterScript>().gameObject.GetComponent<Animator>().SetBool("withObj", true);
+                    PlayTrashSound();
                 }
             }
         }
     }
-    
-    
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    print("collision");
-    //    if(collision.CompareTag("Player"))
-    //    {
-    //        print("collision player");
-    //        joinPosition = collision.gameObject.transform.Find("JoinPoint").gameObject;
-    //        joinToPlayer = true;
-    //    }
-    //}
+    void PlayTrashSound()
+    {
+        switch (tag)
+        {
+            case "Plastic":
+                audioSource.PlayOneShot(takeTrashSounds[0], 1f);
+                break;
+            case "Paper":
+                audioSource.PlayOneShot(takeTrashSounds[1], 1f);
+                break;
+            case "Glass":
+                audioSource.PlayOneShot(takeTrashSounds[2], 1f);
+                break;
+            case "Metal":
+                audioSource.PlayOneShot(takeTrashSounds[3], 1f);
+                break;
+            default:
+                break;
+        }
+    }
     private void Update()
     {
         if (joinedToPlayer)

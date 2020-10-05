@@ -10,7 +10,8 @@ public class GameControllerScript : MonoBehaviour
     public float maxTimer;
     private int score;
     public Image scoreImg;
-    public Text timerText;
+    //public Text timerText;
+    public Image timerImg;
     private GameObject player;
     private float timer;
     private bool startTimer;
@@ -22,14 +23,19 @@ public class GameControllerScript : MonoBehaviour
         score = 0;
         ChangeScore(0);
         timer = maxTimer;
-        timerText.text = timer.ToString("#.#");
+        //timerText.text = timer.ToString("#.#");
         player = GameObject.Find("Player");
         startTimer = false;
+        timerImg.fillAmount = timer / maxTimer;
     }
     public void StartTimer()
     {
         startTimer = true;
         obj = player.GetComponent<CharacterScript>().ReturnJoinedObject();
+    }
+    public GameObject ReturnObj()
+    {
+        return obj;
     }
     public bool ReturnStartTimer()
     {
@@ -40,7 +46,8 @@ public class GameControllerScript : MonoBehaviour
         if (startTimer)
         {
             timer -= Time.deltaTime;
-            timerText.text = timer.ToString("#.#");
+            timerImg.fillAmount = timer / maxTimer;
+            //timerText.text = timer.ToString("#.#");
 
         }
         if (timer <= 0)
@@ -67,7 +74,8 @@ public class GameControllerScript : MonoBehaviour
 
         startTimer = false; //обнуление таймера
         timer = maxTimer;
-        timerText.text = timer.ToString("#.#");
+        timerImg.fillAmount = timer / maxTimer;
+        //timerText.text = timer.ToString("#.#");
 
         if (score <= 0)
         {
