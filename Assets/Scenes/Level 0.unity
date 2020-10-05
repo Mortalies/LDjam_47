@@ -355,6 +355,16 @@ PrefabInstance:
       propertyPath: lastBackGround
       value: 
       objectReference: {fileID: 1234269724}
+    - target: {fileID: 3828868007173622506, guid: 4f9d0fe8470849e468784b7644ea9410,
+        type: 3}
+      propertyPath: musicVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828868007173622506, guid: 4f9d0fe8470849e468784b7644ea9410,
+        type: 3}
+      propertyPath: musicMenu
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b346ad4d28650948b643c2cdea4db58, type: 3}
     - target: {fileID: 5411206601007263492, guid: 4f9d0fe8470849e468784b7644ea9410,
         type: 3}
       propertyPath: m_LocalPosition.x
