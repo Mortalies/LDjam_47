@@ -21,9 +21,10 @@ public class EnemyScript : MonoBehaviour
             Vector2 forceVector = collider.transform.position - transform.position + Vector3.up * 2f;
             collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
-            print("force");
+            
             distanaton = -distanaton;
             GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);
+            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
 
         }
         if (collider.CompareTag("EnemyObstacle"))
