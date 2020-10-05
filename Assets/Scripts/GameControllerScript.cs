@@ -59,6 +59,7 @@ public class GameControllerScript : MonoBehaviour
     private void LoseTrash()
     {
         startTimer = false;
+        player.GetComponent<Animator>().SetBool("withObj", false);
         Destroy(obj);
         ChangeScore(-1);
         
@@ -95,6 +96,10 @@ public class GameControllerScript : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+    }
+    public void ChangeSound()
+    {
+
     }
     
 

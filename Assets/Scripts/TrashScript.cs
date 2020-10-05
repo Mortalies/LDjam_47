@@ -31,10 +31,11 @@ public class TrashScript : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             
-            if (!gameControllerScript.ReturnStartTimer())
+            if (!gameControllerScript.ReturnStartTimer()) //если первый раз подбирает
             {
                 if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
                 {
+                    GetComponent<Rigidbody2D>().isKinematic = false;
                     joinPoint = collision.transform.Find("empty").gameObject.transform.Find("JoinPoint").gameObject;
                     joinedToPlayer = true;
                     transform.GetComponent<Collider2D>().enabled = false;
@@ -44,7 +45,7 @@ public class TrashScript : MonoBehaviour
                     PlayTrashSound();
                 }
             }
-            else if (gameControllerScript.ReturnObj() == gameObject)
+            else if (gameControllerScript.ReturnObj() == gameObject) //если второй раз подбирает 
             {
                 if (collision.gameObject.GetComponent<CharacterScript>().ReturnJoinedObject() == null)
                 {
