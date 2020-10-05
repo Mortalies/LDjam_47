@@ -18,6 +18,7 @@ public class GameControllerScript : MonoBehaviour
     private GameObject obj;
     public AudioClip[] music;
     public float musicVolume;
+    public float parkMusicVolume;
     public GameObject[] spawnObj;
     public Image fadeImg;
     public int currentLevelInBuild;
@@ -126,18 +127,21 @@ public class GameControllerScript : MonoBehaviour
         {
             case "Level 1":
                 GetComponent<AudioSource>().clip = music[0];
+                GetComponent<AudioSource>().volume = parkMusicVolume;
                 break;
             case "Level 2":
                 GetComponent<AudioSource>().clip = music[1];
+                GetComponent<AudioSource>().volume = musicVolume;
                 break;
             case "Level 3":
                 GetComponent<AudioSource>().clip = music[2];
+                GetComponent<AudioSource>().volume = musicVolume;
                 break;
             default:
                 break;
         }
         GetComponent<AudioSource>().loop = true;
-        GetComponent<AudioSource>().volume = musicVolume;
+        
         GetComponent<AudioSource>().Play();
     }
 

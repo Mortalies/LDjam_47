@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
             collider.gameObject.GetComponent<CharacterScript>().UnJoinObj();
             Vector2 forceVector = (collider.transform.position - transform.position + Vector3.up * 2f) * 0.8f;
             collider.gameObject.GetComponent<Rigidbody2D>().AddForce(forceVector * enemyForceValue, ForceMode2D.Impulse);
+            collider.gameObject.GetComponent<Animator>().SetTrigger("Jump");
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             distanaton = -distanaton;
             GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);

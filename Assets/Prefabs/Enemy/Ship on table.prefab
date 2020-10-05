@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3042835676867999485}
   - component: {fileID: -2977311139359197015}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Ship on table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 562364888102484661, guid: dc8d9b75a59e1054a911c0fab6a880f9, type: 3}
+  m_Sprite: {fileID: 20195368741877224, guid: 0d4838d925f27234c9abc3fc6a975d9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +99,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025751878, y: 1.0996732}
-  m_Size: {x: 1.0263497, y: 2.2827318}
+  m_Offset: {x: -0.057076644, y: 1.1009814}
+  m_Size: {x: 1.0889992, y: 2.4248884}
   m_Direction: 0
 --- !u!114 &3125968394681692607
 MonoBehaviour:
@@ -152,7 +152,7 @@ Animator:
   m_GameObject: {fileID: 7691176277899284745}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5140c259936f1c40a37a19cb495960f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 560c35e9c09e00a41aa6027e49386dd9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
