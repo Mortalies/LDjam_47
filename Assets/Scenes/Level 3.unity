@@ -1777,6 +1777,11 @@ PrefabInstance:
       propertyPath: canWalk
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3125968394681692607, guid: b436b13d2a0b4314392d3e6c2b5e1664,
+        type: 3}
+      propertyPath: right
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691176277899284745, guid: b436b13d2a0b4314392d3e6c2b5e1664,
         type: 3}
       propertyPath: m_Name
@@ -3756,6 +3761,11 @@ PrefabInstance:
       propertyPath: canWalk
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3125968394681692607, guid: b436b13d2a0b4314392d3e6c2b5e1664,
+        type: 3}
+      propertyPath: right
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691176277899284745, guid: b436b13d2a0b4314392d3e6c2b5e1664,
         type: 3}
       propertyPath: m_Name
@@ -3973,6 +3983,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coffe
       objectReference: {fileID: 0}
+    - target: {fileID: 2241856719695484637, guid: 5ffee45c339450a42880358ce1aa161a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ffee45c339450a42880358ce1aa161a, type: 3}
 --- !u!1001 &1281499303
@@ -4070,7 +4085,7 @@ PrefabInstance:
     - target: {fileID: 3125968394681692607, guid: b436b13d2a0b4314392d3e6c2b5e1664,
         type: 3}
       propertyPath: right
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691176277899284745, guid: b436b13d2a0b4314392d3e6c2b5e1664,
         type: 3}
@@ -4594,6 +4609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vine
       objectReference: {fileID: 0}
+    - target: {fileID: 2241856719695484637, guid: 463a3716a39784bccaedb34bf047987e,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463a3716a39784bccaedb34bf047987e, type: 3}
 --- !u!1001 &1404563374
@@ -4896,6 +4916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plastic Cup
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241856719695484637, guid: e3478ef3f9ffe304bad7cfaa837b9037,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3478ef3f9ffe304bad7cfaa837b9037, type: 3}
