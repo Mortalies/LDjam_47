@@ -19,6 +19,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip[] music;
     public float musicVolume;
     public GameObject[] spawnObj;
+    public Image fadeImg;
+    public int currentLevelInBuild;
 
 
     private void Start()
@@ -67,7 +69,8 @@ public class GameControllerScript : MonoBehaviour
         Destroy(obj);
         ChangeScore(-1);
         Spawn();
-        
+        Spawn();
+
     }
     void Spawn()
     {
@@ -96,6 +99,15 @@ public class GameControllerScript : MonoBehaviour
     void WinGame()
     {
         print("You win");
+        StartCoroutine(Fading());
+
+    }
+    IEnumerator Fading()
+    {
+        fadeImg.gameObject.GetComponent<Animator>().SetBool("Fade", true);
+        yield return new WaitUntil(() => fadeImg.color.a == 1);
+        SceneManager.LoadScene(currentLevelInBuild + 1);
+
     }
 
 

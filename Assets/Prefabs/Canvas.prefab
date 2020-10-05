@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -916,6 +916,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14b5111064cfd3c4481ad0fc4ff4b3f3, type: 3}
   - {fileID: 8300000, guid: 31186fe2c34e00d459183187d4767e7b, type: 3}
   musicVolume: 1
+  spawnObj: []
+  fadeImg: {fileID: 1958273948}
 --- !u!82 &8349774786300236744
 AudioSource:
   m_ObjectHideFlags: 0

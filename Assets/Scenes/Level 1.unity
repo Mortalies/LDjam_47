@@ -4335,6 +4335,11 @@ PrefabInstance:
       propertyPath: spawnObj.Array.data[2]
       value: 
       objectReference: {fileID: 1155999429}
+    - target: {fileID: 6196919618246774067, guid: 11bd855c480c7d44ca0313d17097bc65,
+        type: 3}
+      propertyPath: currentLevelInBuild
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11bd855c480c7d44ca0313d17097bc65, type: 3}
 --- !u!1001 &8714937089780644997
