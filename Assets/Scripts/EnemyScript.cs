@@ -25,7 +25,10 @@ public class EnemyScript : MonoBehaviour
             collider.gameObject.GetComponent<CharacterScript>().StopWalking();
             distanaton = -distanaton;
             GetComponent<AudioSource>().PlayOneShot(enemySounds[Random.Range(0, enemySounds.Length - 1)]);
-            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
+            if (canWalk)
+            {
+                GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
+            }
 
         } 
         if(collider.CompareTag("Plastic") || collider.CompareTag("Metal") || collider.CompareTag("Paper") || collider.CompareTag("Glass"))

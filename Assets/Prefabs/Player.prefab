@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24334a3947386f14ca287a8ac905b4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  jumpForce: 75
+  speed: 4
+  jumpForce: 90
   jumpTimer: 0.5
   stopWalkingTimer: 3
   jumpSound: {fileID: 8300000, guid: 3257cd1623ed3444eb7f7a471bfba29f, type: 3}
