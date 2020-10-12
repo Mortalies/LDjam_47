@@ -8,6 +8,7 @@ public class CharacterScript : MonoBehaviour
     public float jumpForce = 1f;
     public float jumpTimer = 0.5f;
     public float stopWalkingTimer = 3f;
+    public float kayotDistance = 0.45f;
     [Header("Звуки")]
 
     public AudioClip jumpSound;
@@ -158,36 +159,53 @@ public class CharacterScript : MonoBehaviour
     }
     void CheckGround()
     {
+
         RaycastHit2D[] hits = { 
-            Physics2D.Raycast(transform.position + Vector3.right * 0f, -transform.up, 1f) };
-        //hits[0] = Physics2D.Raycast(transform.position, -transform.up, 1f);
-
-        Debug.DrawRay(transform.position + Vector3.right * 0f, -transform.up, Color.red, 1f);
-
+            Physics2D.Raycast(transform.position + Vector3.right * velocityX/speed *-kayotDistance - Vector3.up*0.00f - Vector3.up * velocityY/speed * 1.00f , -transform.up, 1.2f) };
+            //hits[0] = Physics2D.Raycast(transform.position, -transform.up, 1f);
+        /// ммммммммммммм хуитааааааааааааааааааааааааааааааааааа
+        Debug.DrawRay(transform.position + Vector3.right * velocityX/speed * -kayotDistance - Vector3.up* 0.00f - Vector3.up * velocityY / speed * 1.0f , -transform.up, Color.red, 0.35f); 
+        
         foreach (RaycastHit2D hit in hits) {
+            
             if (hit.collider != null)
             {
-                onGround = true;
-                anim.SetBool("grounded", true);
+                //print($"ground is {hit.transform.name}"); // проверка того, что есть земля
+                //if (hit.transform.CompareTag("Floor"))
+                //{
+                if (velocityY <= 0)
+                {
+                    onGround = true;
+                    anim.SetBool("grounded", true);
+                }
+                // }
+                if (down)
+                {
+                    if (hit.transform.GetComponent<LadderScript>() != null)
+                    {
+                        hit.transform.GetComponent<LadderScript>().DisableCollider();
+                        anim.SetTrigger("Falling");
+                    }
+                    if (hit.transform.GetComponent<PlatformScript>() != null)
+                    {
+                        hit.transform.GetComponent<PlatformScript>().DisableCollider();
+                        anim.SetTrigger("Falling");
+                    }
+
+                }
             }
             else
             {
                 onGround = false;
                 anim.SetBool("grounded", false);
+                anim.SetTrigger("Falling");
             }
-            if (down)
-            {
-                if (hit.transform.GetComponent<LadderScript>() != null)
-                {
-                    hit.transform.GetComponent<LadderScript>().DisableCollider();
-                }
-                if (hit.transform.GetComponent<PlatformScript>() != null)
-                {
-                    hit.transform.GetComponent<PlatformScript>().DisableCollider();
-                }
-
-            }
+            
         }
+
+    }
+    void ChangeOnGroundTimer()
+    {
 
     }
     public void ChangeJoinedObject(GameObject obj)

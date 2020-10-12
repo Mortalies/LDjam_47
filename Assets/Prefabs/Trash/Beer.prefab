@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2241856719695484637}
   - component: {fileID: 2241856719695484577}
   - component: {fileID: 7939028605425718625}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beer
   m_TagString: Glass
   m_Icon: {fileID: 0}

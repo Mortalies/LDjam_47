@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2241856719695484637}
   - component: {fileID: 2241856719695484577}
   - component: {fileID: -3496008837982139891}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Can
   m_TagString: Metal
   m_Icon: {fileID: 0}

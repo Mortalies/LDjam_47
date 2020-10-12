@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5901593220374351599}
   - component: {fileID: 6051519525349011787}
   - component: {fileID: 884647438799435361}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,10 +201,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.38623658, y: -0.32752687}
-  - {x: -0.39, y: 0.5}
-  - {x: 0.36309204, y: 0.5}
-  - {x: 0.3764061, y: -0.33033904}
+  - {x: -0.376532, y: 0.12140967}
+  - {x: -0.37561226, y: 0.41017306}
+  - {x: 0.35925865, y: 0.4074241}
+  - {x: 0.36289537, y: 0.109037206}
 --- !u!114 &3028131451925092901
 MonoBehaviour:
   m_ObjectHideFlags: 0

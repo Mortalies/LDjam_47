@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2241856719695484637}
   - component: {fileID: 2241856719695484577}
   - component: {fileID: 1604243536690181035}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plastic Cup
   m_TagString: Plastic
   m_Icon: {fileID: 0}

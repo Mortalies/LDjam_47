@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 161923190921155372}
   - component: {fileID: 9780701343788168}
   - component: {fileID: 6890236556013857698}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
