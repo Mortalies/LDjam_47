@@ -20,7 +20,7 @@ public class CharacterScript : MonoBehaviour
     [Header("Взаимодействие")]
     private GameObject joinPoint;
     private bool canJump;
-    
+
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -36,6 +36,7 @@ public class CharacterScript : MonoBehaviour
     private bool down; //проверка нажатия конпки вниз
     private bool canWalk; //застенен ли игрок
     private AudioSource audioSource;
+    private float startFriction;
     
 
 
@@ -53,11 +54,12 @@ public class CharacterScript : MonoBehaviour
         canJump = true;
         canWalk = true;
         anim.SetBool("withObj", false);
+        //startFriction = GetComponent<Collider2D>().sharedMaterial.friction;
     }
     private void FixedUpdate()
     {
         velocityX = -(tempPos.x - transform.position.x) / Time.fixedDeltaTime;
-        velocityY = - Mathf.Round((tempPos.y - transform.position.y) / Time.fixedDeltaTime);
+        velocityY = -Mathf.Round((tempPos.y - transform.position.y) / Time.fixedDeltaTime);
         tempPos = transform.position;
 
         CheckGround(); //проверка земли каждый кадр
@@ -65,6 +67,7 @@ public class CharacterScript : MonoBehaviour
         {
             if (Input.GetButton("Horizontal"))
             {
+                
                 Move();
             }
         }
@@ -110,12 +113,12 @@ public class CharacterScript : MonoBehaviour
         //print(Input.GetAxisRaw("Vertical"));
         AnimatorParam(); //передача парметров в аниматор контроллер
     }
-   
+
     void AnimatorParam()
     {
         if (canWalk)
         {
-                anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+            anim.SetFloat("speed.x", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         }
         else
         {
@@ -129,6 +132,7 @@ public class CharacterScript : MonoBehaviour
         //rb.velocity = transform.up * jumpForce;
         if (canJump)
         {
+            //GetComponent<Collider2D>().sharedMaterial.friction = 0;
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
             anim.SetTrigger("Jump");
@@ -143,7 +147,7 @@ public class CharacterScript : MonoBehaviour
     void Move()
     {
         moveTemp.x = Input.GetAxisRaw("Horizontal");
-        
+
         if (moveTemp.x > 0.01f)
         {
             sprite.flipX = false;
@@ -152,58 +156,66 @@ public class CharacterScript : MonoBehaviour
         else if (moveTemp.x < -0.01f)
         {
             sprite.flipX = true;
-            joinPoint.transform.localPosition = new Vector3 (-startJoinPointLocalPosition.x, startJoinPointLocalPosition.y, startJoinPointLocalPosition.z);
+            joinPoint.transform.localPosition = new Vector3(-startJoinPointLocalPosition.x, startJoinPointLocalPosition.y, startJoinPointLocalPosition.z);
         }
         transform.position = Vector3.MoveTowards(transform.position, transform.position + moveTemp, speed * Time.fixedDeltaTime);
         //rb.MovePosition(transform.position + moveTemp * speed / 100);
     }
     void CheckGround()
     {
+        //луч под себя
 
-        RaycastHit2D[] hits = { 
-            Physics2D.Raycast(transform.position + Vector3.right * velocityX/speed *-kayotDistance - Vector3.up*0.00f - Vector3.up * velocityY/speed * 1.00f , -transform.up, 1.2f) };
-            //hits[0] = Physics2D.Raycast(transform.position, -transform.up, 1f);
-        /// ммммммммммммм хуитааааааааааааааааааааааааааааааааааа
-        Debug.DrawRay(transform.position + Vector3.right * velocityX/speed * -kayotDistance - Vector3.up* 0.00f - Vector3.up * velocityY / speed * 1.0f , -transform.up, Color.red, 0.35f); 
-        
-        foreach (RaycastHit2D hit in hits) {
-            
-            if (hit.collider != null)
-            {
-                //print($"ground is {hit.transform.name}"); // проверка того, что есть земля
-                //if (hit.transform.CompareTag("Floor"))
-                //{
-                if (velocityY <= 0)
-                {
-                    onGround = true;
-                    anim.SetBool("grounded", true);
-                }
-                // }
-                if (down)
-                {
-                    if (hit.transform.GetComponent<LadderScript>() != null)
-                    {
-                        hit.transform.GetComponent<LadderScript>().DisableCollider();
-                        anim.SetTrigger("Falling");
-                    }
-                    if (hit.transform.GetComponent<PlatformScript>() != null)
-                    {
-                        hit.transform.GetComponent<PlatformScript>().DisableCollider();
-                        anim.SetTrigger("Falling");
-                    }
+        RaycastHit2D hit;
 
-                }
-            }
-            else
+        if (Mathf.Abs(velocityX) >= 3 ) // если двигается, то луч сзади
+        {
+            hit = Physics2D.Raycast(transform.position + Vector3.right * velocityX / speed * -kayotDistance, -transform.up, 2f);
+
+            Debug.DrawRay(transform.position + Vector3.right * velocityX / speed * -kayotDistance, -transform.up, Color.red, 0.35f);
+        }
+        else
+        {
+            hit = Physics2D.Raycast(transform.position - Vector3.up * 0.7f, -transform.up, 0.1f);
+            Debug.DrawRay(transform.position - Vector3.up * 0.7f, -transform.up, Color.red, 0.35f);
+        }
+        if (hit.collider != null)
+        {
+            //print($"ground is {hit.transform.name}"); // проверка того, что есть земля
+            //if (hit.transform.CompareTag("Floor"))
+            //{
+            onGround = true;
+            anim.SetBool("grounded", true);
+            //GetComponent<Collider2D>().sharedMaterial.friction = startFriction;
+            // }
+            if (down)
             {
-                onGround = false;
-                anim.SetBool("grounded", false);
-                anim.SetTrigger("Falling");
+                if (hit.transform.GetComponent<LadderScript>() != null)
+                {
+                    hit.transform.GetComponent<LadderScript>().DisableCollider();
+                    anim.SetTrigger("Falling");
+                    //GetComponent<Collider2D>().sharedMaterial.friction = 0;
+                }
+                if (hit.transform.GetComponent<PlatformScript>() != null)
+                {
+                    hit.transform.GetComponent<PlatformScript>().DisableCollider();
+                    anim.SetTrigger("Falling");
+                    //GetComponent<Collider2D>().sharedMaterial.friction = 0;
+                }
+
             }
             
         }
+        else
+        {
+            onGround = false;
+            anim.SetBool("grounded", false);
+            anim.SetTrigger("Falling");
+            //GetComponent<Collider2D>().sharedMaterial.friction = 0;
+        }
 
     }
+
+    
     void ChangeOnGroundTimer()
     {
 

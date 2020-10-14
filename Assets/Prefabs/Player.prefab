@@ -140,8 +140,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007299423, y: -0.029195547}
-  m_Size: {x: 0.82709885, y: 1.4856195}
+  m_Offset: {x: 0.029981047, y: -0.029195547}
+  m_Size: {x: 0.7322485, y: 1.4856195}
   m_Direction: 0
 --- !u!114 &4199070684572210834
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   jumpForce: 90
   jumpTimer: 0.5
   stopWalkingTimer: 3
-  kayotDistance: 0.4
+  kayotDistance: 0.5
   jumpSound: {fileID: 8300000, guid: 3257cd1623ed3444eb7f7a471bfba29f, type: 3}
   stepSoundPark: {fileID: 8300000, guid: cc0c727ca4a4d284cb6029bce481bd2d, type: 3}
   stepSoundParkVolume: 0.25
