@@ -75,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 85843822193122893, guid: a3a5e02896531fa4f908f7fcde85ab9c, type: 3}
+  m_Sprite: {fileID: -5373762528646379411, guid: d5295e052d03b814f8d6187bf941e145,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +100,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0979929, y: 0}
-  m_Size: {x: 1.1708317, y: 2.8125}
+  m_Offset: {x: -0.04566126, y: -0.038048744}
+  m_Size: {x: 1.5462878, y: 4.161424}
   m_Direction: 0
 --- !u!114 &3125968394681692607
 MonoBehaviour:
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyForceValue: 50
   canWalk: 0
-  right: 1
+  right: 0
   speed: 2
   enemySounds:
   - {fileID: 8300000, guid: 8dfbab5823286604582cfd7309b8cc7d, type: 3}
@@ -181,7 +182,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.8310318
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
