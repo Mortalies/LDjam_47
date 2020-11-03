@@ -62,6 +62,7 @@ public class GameControllerScript : MonoBehaviour
             LoseTrash();
             
         }
+        CheatWinCheck();
     }
     private void LoseTrash()
     {
@@ -144,8 +145,22 @@ public class GameControllerScript : MonoBehaviour
         
         GetComponent<AudioSource>().Play();
     }
+    void CheatWinCheck()
+    {
+        if (Input.GetKey(KeyCode.N))
+        {
+            if (Input.GetKey(KeyCode.J))
+            {
+                if (Input.GetKey(KeyCode.I))
+                {
+                    WinGame();
+                }
+            }
+        }
+    }
 
-    
+
+
 
 
 }

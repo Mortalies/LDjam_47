@@ -169,18 +169,18 @@ public class CharacterScript : MonoBehaviour
 
         if (Mathf.Abs(velocityX) >= 3 ) // если двигается, то луч сзади
         {
-            hit = Physics2D.Raycast(transform.position + Vector3.right * velocityX / speed * -kayotDistance, -transform.up, 2f);
+            hit = Physics2D.Raycast(transform.position + transform.up * 0.25f + Vector3.right * velocityX / speed * -kayotDistance, -transform.up, 1.5f);
 
             Debug.DrawRay(transform.position + Vector3.right * velocityX / speed * -kayotDistance, -transform.up, Color.red, 0.35f);
         }
         else
         {
-            hit = Physics2D.Raycast(transform.position - Vector3.up * 0.7f, -transform.up, 0.1f);
+            hit = Physics2D.Raycast(transform.position - Vector3.up * 0.7f, -transform.up, 0.25f);
             Debug.DrawRay(transform.position - Vector3.up * 0.7f, -transform.up, Color.red, 0.35f);
         }
         if (hit.collider != null)
         {
-            //print($"ground is {hit.transform.name}"); // проверка того, что есть земля
+            print($"ground is {hit.transform.name}"); // проверка того, что есть земля
             //if (hit.transform.CompareTag("Floor"))
             //{
             onGround = true;
@@ -207,6 +207,7 @@ public class CharacterScript : MonoBehaviour
         }
         else
         {
+            print("collider is null");
             onGround = false;
             anim.SetBool("grounded", false);
             anim.SetTrigger("Falling");
@@ -241,10 +242,10 @@ public class CharacterScript : MonoBehaviour
     {
         canWalk = true;
     }
-    
+
     void StepEvent()
     {
-        string levelName = SceneManager.GetActiveScene().name; 
+        string levelName = SceneManager.GetActiveScene().name;
         switch (levelName)
         {
             case "Level 1":
@@ -259,6 +260,8 @@ public class CharacterScript : MonoBehaviour
             default:
                 break;
         }
+        
+
     }
 }
 
